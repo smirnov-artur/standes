@@ -1,0 +1,46 @@
+{
+  "name": "standes",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:en": "cross-env VITE_LOCALE=en vite",
+    "build": "tsc --noEmit && vite build",
+    "build:en": "cross-env VITE_LOCALE=en vite build",
+    "build:all": "npm run build && npm run build:en",
+    "typecheck": "tsc --noEmit",
+    "preview": "vite preview",
+    "preview:en": "vite preview --outDir dist-en",
+    "build:pages": "cross-env VITE_BASE=/standes/ vite build --outDir docs && cross-env VITE_LOCALE=en VITE_BASE=/standes/en/ vite build --outDir docs/en"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
+    "@react-three/postprocessing": "^3.0.5",
+    "clsx": "^2.1.1",
+    "immer": "^11.1.16",
+    "lucide-react": "^0.548.0",
+    "lz-string": "^1.5.0",
+    "n8ao": "^2.0.1",
+    "postprocessing": "^6.37.8",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.185.1",
+    "three-stdlib": "^2.36.1",
+    "zundo": "^2.3.0",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.185.4",
+    "@vitejs/plugin-react": "^5.1.0",
+    "cross-env": "^10.1.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}
