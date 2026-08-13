@@ -18,11 +18,13 @@ import { money } from '@/i18n/currency'
 import type { ShelfUnit } from '@/domain/types'
 import { useAppStore } from '@/store/useStore'
 import { copyToClipboard } from '@/export/share'
+import { LS_NS } from '@/export/project'
 import { Button } from '@/ui/controls'
 
 import { shelfCount, useOrderSummary } from './Summary'
 
-const STORE_KEY = 'standes:leads'
+/** Заявки русского и английского сайта не смешиваются — см. LS_NS. */
+const STORE_KEY = `${LS_NS}:leads`
 
 // ────────────────────────────────────────────────────────────────────────────
 //  Сводка заказа

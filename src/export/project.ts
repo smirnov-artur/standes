@@ -1,9 +1,20 @@
 import type { Project } from '@/domain/types'
 import { makeProject } from '@/domain/defaults'
-import { t } from '@/i18n'
+import { LOCALE, t } from '@/i18n'
 
-const LS_KEY = 'standes:project:v1'
-const LS_AUTOSAVE = 'standes:autosave:v1'
+/**
+ * Пространство имён хранилища привязано к локали.
+ *
+ * Русская и английская версии — это два разных сайта, но на GitHub Pages они
+ * лежат в подпапках одного домена (`/standes/` и `/standes/en/`), а значит
+ * делят один localStorage. Без суффикса английская версия открывалась с
+ * проектом, собранным на русской: чужие названия секций, рубли в позициях,
+ * чужие заявки. Ключи разведены по локали — сайты снова независимы.
+ */
+export const LS_NS = `standes:${LOCALE}`
+
+const LS_KEY = `${LS_NS}:project:v1`
+const LS_AUTOSAVE = `${LS_NS}:autosave:v1`
 
 /** Отдаёт файл пользователю. В песочнице/артефакте download может быть заблокирован — не паникуем. */
 export function downloadFile(name: string, data: string | Blob, mime = 'application/json') {
@@ -105,7 +116,7 @@ export function loadLocal(key = LS_AUTOSAVE): Project | null {
 // ── Настройки интерфейса (тема, привязки, качество) ─────────────────────────
 // Хранятся отдельно от проекта: они про рабочее место, а не про содержимое.
 
-const LS_PREFS = 'standes:prefs:v1'
+const LS_PREFS = `${LS_NS}:prefs:v1`
 
 export function savePrefs(prefs: Record<string, unknown>) {
   try {

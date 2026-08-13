@@ -8,13 +8,14 @@ import { money } from '@/i18n/currency'
 import { IconButton, Segmented, Tooltip, type SegmentedOption } from '@/ui/controls'
 import { BomTable, useBomState, useElementWidth } from '@/ui/BomTable'
 import { CutlistView } from '@/ui/CutlistView'
+import { LS_NS } from '@/export/project'
 
 // ────────────────────────────────────────────────────────────────────────────
 //  Высота панели: тянется за верхний край, живёт в localStorage
 // ────────────────────────────────────────────────────────────────────────────
 
 /** Ключ версионирован: прежние 260 px оказались слишком низкими для сметы */
-const STORE_KEY = 'standes:bottomH2'
+const STORE_KEY = `${LS_NS}:bottomH2`
 const MIN_H = 140
 const DEFAULT_H = 320
 /** Полоса сцены, которую панель не имеет права съесть */
