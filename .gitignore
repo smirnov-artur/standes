@@ -1,6 +1,15 @@
 node_modules/
+
+# Обе сборки — артефакты. На Pages уезжает только docs/, он под контролем версий.
 dist/
+dist-en/
+
+# Отладочные снимки экрана: playwright и ручные прогоны кладут их в корень.
+# Без этого правила `git add -A` затаскивает их в репозиторий пачками.
 .playwright-mcp/
+*.png
+!public/*.png
+!docs/**/*.png
+
 *.local
 .DS_Store
-qa-*.png
